@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reeja don ko lagi❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffd6e8, #ffc2d1);
+    font-family: 'Comic Sans MS', cursive;
+    overflow: hidden;
+}
+
+/* Envelope */
+.envelope {
+    width: 320px;
+    height: 200px;
+    background: #ff4b6e;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Card */
+.card {
+    width: 350px;
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    display: none;
+    animation: pop 0.8s ease;
+}
+
+h1 {
+    color: #ff4b6e;
+}
+
+/* PHOTO STYLE */
+.love-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 15px 0;
+    border: 4px solid #ff4b6e;
+    box-shadow: 0 0 15px #ff4b6e;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 10px #ff4b6e; }
+    to { box-shadow: 0 0 25px #ff85a2; }
+}
+
+p {
+    color: #444;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.buttons {
+    margin-top: 15px;
+}
+
+button {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+}
+
+#yesBtn {
+    background: #ff4b6e;
+    color: white;
+}
+
+#noBtn {
+    background: #999;
+    color: white;
+}
+
+/* Falling flowers */
+.flower {
+    position: fixed;
+    top: -10px;
+    font-size: 20px;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+@keyframes pop {
+    from {transform: scale(0.5); opacity:0;}
+    to {transform: scale(1); opacity:1;}
+}
+
+/* Fireworks hearts */
+.firework {
+    position: fixed;
+    font-size: 24px;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+    0% { transform: scale(0); opacity: 1; }
+    100% { transform: scale(2); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openCard()">
+    💌 Tap to Open Motu's Love Letter 💌
+</div>
+
+<div class="card" id="card">
+    <h1>Reeja don(babeeeee) ❤️</h1>
+
+    <!-- HER PHOTO HERE -->
+    <img src="mutu.jpg" alt="My Motu" class="love-photo">
+
+    <p>
+        You are the sweetest part of my life. 💖<br><br>
+        I promise I will always be with you —  
+        in happiness,in every single moment. 💞<br><br>
+        No matter what happens, I will never leave your side.  
+        You are my forever, babeeee. 💌
+    </p>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="love()">Yes ❤️</button>
+        <button id="noBtn" onmouseover="moveNo()">No 😜</button>
+    </div>
+</div>
+
+<script>
+function openCard() {
+    document.querySelector(".envelope").style.display = "none";
+    document.getElementById("card").style.display = "block";
+}
+
+function love() {
+    alert("Wish we get to marry each other<3 I love youuuuuuuuuuu❤️");
+
+    for (let i = 0; i < 20; i++) {
+        const heart = document.createElement("div");
+        heart.className = "firework";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 1000);
+    }
+}
+
+function moveNo() {
+    const noBtn = document.getElementById("noBtn");
+    noBtn.style.position = "fixed";
+
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = window.innerWidth - btnWidth;
+    const maxY = window.innerHeight - btnHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+}
+
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+    flower.innerHTML = "🌸";
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = Math.random() * 3 + 4 + "s";
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, 7000);
+}
+
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>
